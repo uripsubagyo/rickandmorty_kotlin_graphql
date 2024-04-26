@@ -6,6 +6,20 @@ plugins {
     id("com.google.dagger.hilt.android")
 }
 
+apollo{
+    service("graphql-ricknmorty") {
+        packageName.set("com.example.rickandmortyapi")
+        sourceFolder.set("")
+        generateOptionalOperationVariables.set(false)
+        generateKotlinModels.set(true)
+
+        introspection {
+            endpointUrl.set("https://rickandmortyapi.com/graphql")
+            schemaFile.set(file("app/src/main/graphql/schema.graphqls"))
+        }
+    }
+}
+
 android {
     namespace = "com.example.rickandmortyapi"
     compileSdk = 34
@@ -36,14 +50,21 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
 
     implementation("com.apollographql.apollo3:apollo-runtime:3.8.1")
     implementation("com.apollographql.apollo3:apollo-api:3.8.1")
-
+    implementation("com.apollographql.apollo:apollo-coroutines-support:2.5.14")
     implementation("com.google.dagger:hilt-android:2.48")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     kapt("com.google.dagger:hilt-android-compiler:2.48")
     implementation("androidx.hilt:hilt-work:1.0.0")
     kapt("androidx.hilt:hilt-compiler:1.0.0")
@@ -57,8 +78,6 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-}
+    implementation ("androidx.work:work-runtime:2.7.0-alpha05")
 
-apollo {
-    packageName.set("com.example")
 }

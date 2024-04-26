@@ -6,7 +6,7 @@ data class DetailLocation (
     val   type: String,
     val  dimension: String,
     val   created: String,
-    val  residents:ResidenceCharacter
+    val  residents:List<ResidenceCharacter>
 )
 data class ResidenceCharacter(
     val name: String,

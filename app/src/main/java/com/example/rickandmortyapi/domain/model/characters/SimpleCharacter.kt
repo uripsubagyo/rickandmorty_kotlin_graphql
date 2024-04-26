@@ -5,4 +5,4 @@ data class SimpleCharacter(
     val name: String,
     val image: String,
     val species: String
-    ,)
+    )

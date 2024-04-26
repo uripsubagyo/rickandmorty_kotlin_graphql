@@ -9,9 +9,9 @@ interface RickAndMortyClient {
 
     suspend fun getCharacters(): List<SimpleCharacter>
 
-    suspend fun getDetailCharacter(): Character
+    suspend fun getDetailCharacterById(id:String): Character?
 
     suspend fun getLocations(): List<SimpleLocation>
 
-    suspend fun getDetailLocation(): DetailLocation
+    suspend fun getDetailLocation(id: String): DetailLocation?
 }
