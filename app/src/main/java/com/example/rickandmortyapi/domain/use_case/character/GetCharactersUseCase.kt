@@ -9,7 +9,6 @@ class GetCharactersUseCase @Inject constructor(
     private val client : RickAndMortyClient
 ) {
     suspend fun execute() : List<SimpleCharacter> {
-        Log.d("UC", "called")
         return client.getCharacters()
     }
 }

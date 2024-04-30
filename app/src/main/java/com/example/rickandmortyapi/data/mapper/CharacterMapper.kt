@@ -13,9 +13,9 @@ fun CharactersQuery.Characters.toCharacterList(): List<SimpleCharacter> {
     return this.results?.mapNotNull { result ->
         SimpleCharacter(
             id = result?.id.orEmpty(),
-            name = result?.id.orEmpty(),
-            image = result?.id.orEmpty(),
-            species = result?.id.orEmpty()
+            name = result?.name.orEmpty(),
+            image = result?.image.orEmpty(),
+            species = result?.species.orEmpty()
         )
     }.orEmpty()
 }

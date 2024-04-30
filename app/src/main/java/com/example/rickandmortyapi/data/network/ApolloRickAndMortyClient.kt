@@ -23,11 +23,6 @@ class ApolloRickAndMortyClient @Inject constructor(
 ) : RickAndMortyClient {
 
     override suspend fun getCharacters(): List<SimpleCharacter> {
-        Log.d("ApolloClient", "called")
-        Log.d("ApolloClient", "${apolloClient
-            .query(CharactersQuery(0))
-            .execute()}")
-
         return try {
             apolloClient.query(CharactersQuery(0))
                 .execute()

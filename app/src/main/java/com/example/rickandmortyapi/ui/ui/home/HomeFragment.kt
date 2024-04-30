@@ -1,25 +1,18 @@
 package com.example.rickandmortyapi.ui.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.runtime.Composable
 import androidx.fragment.app.Fragment
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.*
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rickandmortyapi.databinding.FragmentHomeBinding
-import com.example.rickandmortyapi.domain.use_case.character.GetCharactersUseCase
 import com.example.rickandmortyapi.ui.MainHomeActivity
-import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
+import com.example.rickandmortyapi.ui.ui.home.Adapter.CharacterListAdapter
+import com.example.rickandmortyapi.ui.ui.home.Adapter.LocationsListAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 //@AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -27,6 +20,8 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var homeViewModel: HomeViewModel
+    private lateinit var characterListAdapter: CharacterListAdapter
+    private lateinit var locationListAdapter: LocationsListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -34,6 +29,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         homeViewModel = (activity as MainHomeActivity).viewModel
+        setupRecyclerView()
 
         return binding.root
     }
@@ -44,16 +40,33 @@ class HomeFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 homeViewModel.shortCharacter.collectLatest { value ->
-                    Log.d("HomeFragment", "datA: ${value.characters}")
+                    if(value.characters.isNotEmpty()){
+                        characterListAdapter.submitList(value.characters.subList(0,value.characters.size/4))
+                    }
+                    if(value.locations.isNotEmpty()){
+                        locationListAdapter.submitList(value.locations.subList(0,value.locations.size/4))
+                    }
                 }
             }
         }
-
-        Log.d("CHECK_33", homeViewModel.shortCharacter.value.locations.toString())
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setupRecyclerView() {
+        characterListAdapter = CharacterListAdapter()
+            binding.rvCharacter.apply {
+                adapter = characterListAdapter
+                layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            }
+
+        locationListAdapter = LocationsListAdapter()
+        binding.rvLocation.apply {
+            adapter = locationListAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
     }
 }

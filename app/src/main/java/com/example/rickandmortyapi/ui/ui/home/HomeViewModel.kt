@@ -1,5 +1,6 @@
 package com.example.rickandmortyapi.ui.ui.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -30,23 +31,20 @@ class HomeViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            getCharactersUseCase.execute()
+            _shortCharacter.update {
+                it.copy(
+                    isLoading = true
+                )
+            }
+            _shortCharacter.update {
+                it.copy(
+                    characters = getCharactersUseCase.execute(),
+                    locations = getLocationsUseCase.execute(),
+                    isLoading = false
+                )
+            }
+
         }
-//        viewModelScope.launch {
-//            _shortCharacter.update {
-//                it.copy(
-//                    isLoading = true
-//                )
-//            }
-//            _shortCharacter.update {
-//                it.copy(
-//                    characters = getCharactersUseCase.execute(),
-//                    locations = getLocationsUseCase.execute(),
-//                    isLoading = false
-//                )
-//            }
-//
-//        }
     }
 
 }

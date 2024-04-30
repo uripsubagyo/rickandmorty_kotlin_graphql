@@ -79,5 +79,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation ("androidx.work:work-runtime:2.7.0-alpha05")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
 }

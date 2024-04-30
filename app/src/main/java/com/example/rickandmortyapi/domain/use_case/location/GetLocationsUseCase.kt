@@ -9,7 +9,6 @@ class GetLocationsUseCase @Inject constructor(
     private val client: RickAndMortyClient
 ) {
     suspend fun execute(): List<SimpleLocation>{
-        Log.d("CHECK_GET_LOC", "PASSS")
         return client.getLocations()
     }
 }
