@@ -16,7 +16,10 @@
             android:theme="@style/Theme.RickAndMortyAPI"
             tools:targetApi="31">
         <activity
-                android:name=".ui.ui.DetailCharacter"
+                android:name=".ui.ui.detailLocation.DetailLocation"
+                android:exported="false"/>
+        <activity
+                android:name=".ui.ui.detailCharacter.DetailCharacter"
                 android:exported="false"/>
         <activity
                 android:name=".ui.ui.TestActivity"
