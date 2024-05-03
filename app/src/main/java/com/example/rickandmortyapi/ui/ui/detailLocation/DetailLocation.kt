@@ -1,9 +1,11 @@
 package com.example.rickandmortyapi.ui.ui.detailLocation
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract.Contacts
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.core.os.bundleOf
@@ -52,8 +54,11 @@ class DetailLocation : AppCompatActivity() {
                     textHeader.setText(it.detailLocation?.name)
 
                     val textDimension: TextView = findViewById(R.id.text_dimension)
-                    textDimension.setText(it.detailLocation?.dimension)
-
+                    if(it.detailLocation?.dimension == "unknown"){
+                        textDimension.setText("Doesn't have Dimension")
+                    }else {
+                        textDimension.setText(it.detailLocation?.dimension)
+                    }
                     val textType: TextView = findViewById(R.id.text_type)
                     textType.setText("Type ${it.detailLocation?.type}")
 
@@ -65,6 +70,10 @@ class DetailLocation : AppCompatActivity() {
                     }
                 }
             }
+        }
+
+        binding.backIcon.setOnClickListener{
+//            super.onBackPressed()
         }
     }
 

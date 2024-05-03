@@ -1,15 +1,18 @@
 package com.example.rickandmortyapi.ui.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.*
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rickandmortyapi.databinding.FragmentHomeBinding
 import com.example.rickandmortyapi.ui.MainHomeActivity
+import com.example.rickandmortyapi.ui.ui.character.CharacterFragment
 import com.example.rickandmortyapi.ui.ui.home.Adapter.CharacterListAdapter
 import com.example.rickandmortyapi.ui.ui.home.Adapter.LocationsListAdapter
 import kotlinx.coroutines.flow.collectLatest
@@ -31,6 +34,13 @@ class HomeFragment : Fragment() {
         homeViewModel = (activity as MainHomeActivity).viewModel
 
         setupRecyclerView()
+
+//        binding.seeMoreCharacter.setOnClickListener {
+//            val transaction = parentFragmentManager
+//            val fragmentTransaction = transaction.beginTransaction()
+//            fragmentTransaction.replace(, CharacterFragment())
+//            fragmentTransaction.commit()
+//        }
 
         return binding.root
     }

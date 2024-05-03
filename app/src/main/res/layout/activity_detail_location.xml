@@ -20,13 +20,15 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/back_icon"
+                android:id="@+id/back_icon"
         />
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:id="@+id/name_location"
-                android:text="Heloo"
+    android:textStyle="bold"
+                android:text="Header_name"
         />
     </FrameLayout>
     <LinearLayout
