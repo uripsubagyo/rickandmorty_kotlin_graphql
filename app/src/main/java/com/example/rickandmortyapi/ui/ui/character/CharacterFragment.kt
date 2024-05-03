@@ -12,12 +12,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.rickandmortyapi.R
 import com.example.rickandmortyapi.databinding.FragmentCharacterBinding
 import com.example.rickandmortyapi.ui.MainHomeActivity
 import com.example.rickandmortyapi.ui.ui.home.Adapter.CharacterListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -71,5 +73,14 @@ class CharacterFragment : Fragment() {
             adapter = characterListAdaper
             layoutManager = GridLayoutManager(requireContext(), 2)
         }
+
+        binding.rvCharacterCharFrag.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if(dy >characterViewModel.characters.value.characters.count() - 3){
+                    characterViewModel.callMoreData()
+                }
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
     }
 }

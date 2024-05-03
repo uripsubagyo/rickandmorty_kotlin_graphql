@@ -18,12 +18,6 @@ class HomeViewModel @Inject constructor(
     private val getLocationsUseCase: GetLocationsUseCase
 ) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-
-    val text: LiveData<String> = _text
-
     private val _shortCharacter = MutableStateFlow(HomeState())
 
     val shortCharacter = _shortCharacter.asStateFlow()
@@ -37,8 +31,8 @@ class HomeViewModel @Inject constructor(
             }
             _shortCharacter.update {
                 it.copy(
-                    characters = getCharactersUseCase.execute(),
-                    locations = getLocationsUseCase.execute(),
+                    characters = getCharactersUseCase.execute(1),
+                    locations = getLocationsUseCase.execute(page = 1),
                     isLoading = false
                 )
             }

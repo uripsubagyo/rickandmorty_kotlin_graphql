@@ -28,8 +28,19 @@ class LocationViewModel @Inject constructor(
             }
             _locations.update {
                 it.copy(
-                    locations =  getLocationsUseCase.execute(),
+                    locations =  getLocationsUseCase.execute(locations.value.page),
                     isLoading = false
+                )
+            }
+        }
+    }
+
+
+    fun callMoreData(){
+        viewModelScope.launch{
+            _locations.update {
+                it.copy(
+                    locations = it.locations + getLocationsUseCase.execute(locations.value.page + 1)
                 )
             }
         }

@@ -7,11 +7,11 @@ import com.example.rickandmortyapi.domain.model.characters.SimpleCharacter
 
 interface RickAndMortyClient {
 
-    suspend fun getCharacters(): List<SimpleCharacter>
+    suspend fun getCharacters(page: Int): List<SimpleCharacter>
 
     suspend fun getDetailCharacterById(id:String): Character?
 
-    suspend fun getLocations(): List<SimpleLocation>
+    suspend fun getLocations(page: Int): List<SimpleLocation>
 
     suspend fun getDetailLocation(id: String): DetailLocation?
 }

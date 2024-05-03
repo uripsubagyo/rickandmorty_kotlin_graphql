@@ -35,9 +35,19 @@ class CharacterViewModel @Inject constructor(
                 )
             }
             _characters.update { it.copy(
-                characters = getCharactersUseCase.execute(),
+                characters = getCharactersUseCase.execute(characters.value.page),
                 isLoading = false
             ) }
         }
+    }
+
+    fun callMoreData(){
+            viewModelScope.launch{
+                _characters.update {
+                    it.copy(
+                        characters = it.characters + getCharactersUseCase.execute(characters.value.page + 1)
+                    )
+                }
+            }
     }
 }

@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetCharactersUseCase @Inject constructor(
     private val client : RickAndMortyClient
 ) {
-    suspend fun execute() : List<SimpleCharacter> {
-        return client.getCharacters()
+    suspend fun execute(page: Int) : List<SimpleCharacter> {
+        return client.getCharacters(page)
     }
 }

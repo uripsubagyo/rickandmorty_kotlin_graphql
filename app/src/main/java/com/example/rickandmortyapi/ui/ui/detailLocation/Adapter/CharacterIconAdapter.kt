@@ -1,12 +1,16 @@
 package com.example.rickandmortyapi.ui.ui.detailLocation.Adapter
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.compose.ui.graphics.Color
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.rickandmortyapi.R
 import com.example.rickandmortyapi.databinding.ItemCharacterIconBinding
 import com.example.rickandmortyapi.domain.model.Location.ResidenceCharacter
 
@@ -32,6 +36,16 @@ class CharacterIconAdapter(
 
             Glide.with(this.binding.root).load(character.image).into(binding.imageIcon)
             binding.statusCharacter.setText(character.status)
+
+            if(character.status.equals("Alive")){
+                binding.statusCharacter.setBackground(ContextCompat.getDrawable(itemView.context, R.drawable.rounded_corner_green))
+                binding.statusCharacter.setTextColor(ContextCompat.getColor(itemView.context, R.color.green))
+            } else if(character.status.equals("Dead")){
+                binding.statusCharacter.setBackground(ContextCompat.getDrawable(itemView.context, R.drawable.rounded_corner_red))
+                binding.statusCharacter.setTextColor(ContextCompat.getColor(itemView.context, R.color.red))
+            } else {
+//                binding.statusCharacter.setTextColor(Color.Gray)
+            }
         }
     }
 

@@ -13,9 +13,14 @@
     <FrameLayout
             android:layout_width="141dp"
             android:layout_height="166dp"
-            android:background="@drawable/image_dummy"
             android:id="@+id/frame_card_img"
     >
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:id="@+id/image_icon"
+                android:src="@drawable/image_dummy"/>
         <View
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"

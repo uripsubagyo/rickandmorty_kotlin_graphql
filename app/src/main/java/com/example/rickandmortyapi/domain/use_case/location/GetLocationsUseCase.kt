@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetLocationsUseCase @Inject constructor(
     private val client: RickAndMortyClient
 ) {
-    suspend fun execute(): List<SimpleLocation>{
-        return client.getLocations()
+    suspend fun execute(page:Int): List<SimpleLocation>{
+        return client.getLocations(page)
     }
 }

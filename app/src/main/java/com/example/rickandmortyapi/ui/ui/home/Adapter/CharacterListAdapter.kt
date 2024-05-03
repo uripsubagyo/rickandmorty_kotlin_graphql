@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.rickandmortyapi.databinding.ItemCharacterCardBinding
 import com.example.rickandmortyapi.domain.model.characters.SimpleCharacter
 import com.example.rickandmortyapi.ui.ui.detailCharacter.DetailCharacter
@@ -37,12 +38,7 @@ class CharacterListAdapter(
         fun bind(character: SimpleCharacter){
             binding.typeCharacter.setText(character.species)
             binding.nameItem.setText(character.name)
-//            Glide
-//                .with(context)
-//                .load(character.image)
-//                .into()
-
-//            Glide.with(binding.frameCardImg).load(character.image).into(binding.frameCardImg.background)
+            Glide.with(binding.imageIcon).load(character.image).into(binding.imageIcon)
         }
     }
 

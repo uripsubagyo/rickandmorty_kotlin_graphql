@@ -22,9 +22,9 @@ class ApolloRickAndMortyClient @Inject constructor(
     private val apolloClient: ApolloClient
 ) : RickAndMortyClient {
 
-    override suspend fun getCharacters(): List<SimpleCharacter> {
+    override suspend fun getCharacters(page: Int): List<SimpleCharacter> {
         return try {
-            apolloClient.query(CharactersQuery(0))
+            apolloClient.query(CharactersQuery(page))
                 .execute()
                 .data
                 ?.characters
@@ -43,8 +43,8 @@ class ApolloRickAndMortyClient @Inject constructor(
             ?.character
             ?.toCharacter()
 
-    override suspend fun getLocations(): List<SimpleLocation> =
-        apolloClient.query(LocationsQuery(1))
+    override suspend fun getLocations(page: Int): List<SimpleLocation> =
+        apolloClient.query(LocationsQuery(page))
             .execute()
             .data
             ?.locations
