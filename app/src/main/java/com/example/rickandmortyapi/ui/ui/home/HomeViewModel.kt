@@ -31,8 +31,8 @@ class HomeViewModel @Inject constructor(
             }
             _shortCharacter.update {
                 it.copy(
-                    characters = getCharactersUseCase.execute(1),
-                    locations = getLocationsUseCase.execute(page = 1),
+                    characters = getCharactersUseCase.execute(5),
+                    locations = getLocationsUseCase.execute(page = 4),
                     isLoading = false
                 )
             }
