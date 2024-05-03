@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.*
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.rickandmortyapi.R
 import com.example.rickandmortyapi.databinding.FragmentHomeBinding
 import com.example.rickandmortyapi.ui.MainHomeActivity
 import com.example.rickandmortyapi.ui.ui.character.CharacterFragment
@@ -35,12 +36,12 @@ class HomeFragment : Fragment() {
 
         setupRecyclerView()
 
-//        binding.seeMoreCharacter.setOnClickListener {
+        binding.seeMoreCharacter.setOnClickListener {
 //            val transaction = parentFragmentManager
 //            val fragmentTransaction = transaction.beginTransaction()
-//            fragmentTransaction.replace(, CharacterFragment())
+//            fragmentTransaction.replace(R.id.scoll_home, CharacterFragment())
 //            fragmentTransaction.commit()
-//        }
+        }
 
         return binding.root
     }
