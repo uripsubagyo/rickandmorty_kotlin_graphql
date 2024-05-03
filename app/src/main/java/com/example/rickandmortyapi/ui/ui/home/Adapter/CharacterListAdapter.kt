@@ -35,7 +35,6 @@ class CharacterListAdapter(
     class CharacterViewHolder(
         private val binding: ItemCharacterCardBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(character: SimpleCharacter){
-            Log.d("ADAPTER", "data: ${character.toString()}")
             binding.typeCharacter.setText(character.species)
             binding.nameItem.setText(character.name)
 //            Glide

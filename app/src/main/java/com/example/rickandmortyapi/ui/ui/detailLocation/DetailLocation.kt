@@ -48,7 +48,6 @@ class DetailLocation : AppCompatActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 detailLocationViewModel.dataDetailLocation.collectLatest {
-                    Log.d("RESULT", it.detailLocation?.id.toString())
                     val textHeader: TextView = findViewById(R.id.name_location)
                     textHeader.setText(it.detailLocation?.name)
 
@@ -62,10 +61,7 @@ class DetailLocation : AppCompatActivity() {
                     textCreate.setText("Created ${it.detailLocation?.created}")
 
                     if (it.detailLocation?.residents != null) {
-//                        Log.d("RESULT_DATA_2", it.detailLocation.residents.toString())
                         characterIconAdapter.submitList(it.detailLocation.residents)
-
-//                        Log.d("RESULT_IN_CHAR", characterIconAdapter.currentList.toString())
                     }
                 }
             }

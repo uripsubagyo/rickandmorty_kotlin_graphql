@@ -22,7 +22,6 @@ class CharacterIconAdapter(
 
         holder.apply {
             val character = getItem(position)
-            Log.d("Data_", "data: $character")
             bind(character)
         }
     }

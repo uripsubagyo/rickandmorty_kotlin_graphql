@@ -2,10 +2,12 @@ package com.example.rickandmortyapi.ui
 
 import com.example.rickandmortyapi.R
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.replace
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.rickandmortyapi.databinding.ActivityMainHomeBinding
@@ -30,6 +32,5 @@ class MainHomeActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main_home)
 
         navView.setupWithNavController(navController)
-//        supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment_activity_main_home, HomeFragment()).commit()
     }
 }
