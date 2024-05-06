@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.*
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rickandmortyapi.R
 import com.example.rickandmortyapi.databinding.FragmentHomeBinding
@@ -18,6 +19,7 @@ import com.example.rickandmortyapi.ui.ui.home.Adapter.CharacterListAdapter
 import com.example.rickandmortyapi.ui.ui.home.Adapter.LocationsListAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class HomeFragment : Fragment() {
 
@@ -37,11 +39,13 @@ class HomeFragment : Fragment() {
         setupRecyclerView()
 
         binding.seeMoreCharacter.setOnClickListener {
-//            val transaction = parentFragmentManager
-//            val fragmentTransaction = transaction.beginTransaction()
-//            fragmentTransaction.replace(R.id.scoll_home, CharacterFragment())
-//            fragmentTransaction.commit()
+            findNavController().navigate(R.id.navigation_character)
         }
+
+        binding.seeMoreLocation.setOnClickListener{
+            findNavController().navigate(R.id.navigation_character)
+        }
+
 
         return binding.root
     }

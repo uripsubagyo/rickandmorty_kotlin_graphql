@@ -7,8 +7,6 @@ import com.example.rickandmortyapi.domain.model.Location.SimpleLocation
 
 
 fun LocationsQuery.Locations.toLocationList(): List<SimpleLocation> {
-    Log.d("Mapper_2", "data: ${results?.getOrNull(0) ?: "empty"}")
-
     return this.results?.mapNotNull { result ->
         SimpleLocation(
             id = result?.id.orEmpty(),

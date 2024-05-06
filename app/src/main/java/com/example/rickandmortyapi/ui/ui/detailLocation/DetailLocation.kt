@@ -3,30 +3,26 @@ package com.example.rickandmortyapi.ui.ui.detailLocation
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract.Contacts
 import android.util.Log
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.core.os.bundleOf
+import androidx.fragment.app.commit
 import androidx.lifecycle.*
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rickandmortyapi.R
 import com.example.rickandmortyapi.databinding.ActivityDetailLocationBinding
-import com.example.rickandmortyapi.databinding.ItemCharacterIconBinding
-import com.example.rickandmortyapi.domain.model.Location.DetailLocation
-import com.example.rickandmortyapi.domain.model.Location.ResidenceCharacter
-import com.example.rickandmortyapi.domain.use_case.location.GetLocationDetailUseCase
 import com.example.rickandmortyapi.ui.ui.detailLocation.Adapter.CharacterIconAdapter
+import com.example.rickandmortyapi.ui.ui.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.observeOn
 import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class DetailLocation : AppCompatActivity() {
+class DetailLocation : AppCompatActivity(){
 
     private val detailLocationViewModel: DetailLocationViewModel by viewModels()
 
@@ -73,10 +69,10 @@ class DetailLocation : AppCompatActivity() {
         }
 
         binding.backIcon.setOnClickListener{
-//            super.onBackPressed()
+            Navigation.findNavController(this, R.id.nav_host_fragment_activity_main_home).navigate(R.id.navigation_location)
+
         }
     }
-
 
     private fun setup() {
         characterIconAdapter = CharacterIconAdapter()
