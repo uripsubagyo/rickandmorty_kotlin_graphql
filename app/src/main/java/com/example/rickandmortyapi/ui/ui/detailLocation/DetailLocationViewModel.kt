@@ -21,7 +21,6 @@ class DetailLocationViewModel @Inject constructor(
     val dataDetailLocation = _dataDetailLocation.asStateFlow()
 
     fun getDetailLocation(idLocation: String) = viewModelScope.launch {
-        Log.d("CHECK_DETAIL_LOC", idLocation)
         _dataDetailLocation.update {
             it.copy(
                 isLoading = true
@@ -29,7 +28,6 @@ class DetailLocationViewModel @Inject constructor(
         }
 
         _dataDetailLocation.update {
-            Log.d("RESULT_DATA_LOCATION", getLocationDetailUseCase.execute(idLocation).toString())
             it.copy(
                 detailLocation = getLocationDetailUseCase.execute(idLocation),
                 isLoading = false
