@@ -28,7 +28,7 @@
                 android:gravity="center"
                 android:id="@+id/name_location"
     android:textStyle="bold"
-                android:text="Header_name"
+                android:text="@string/header_name"
         />
     </FrameLayout>
     <LinearLayout
@@ -50,19 +50,19 @@
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Dimension"
+                android:text="@string/dimension"
                 android:id="@+id/text_dimension"
         />
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Type"
+                android:text="@string/type"
                 android:id="@+id/text_type"
         />
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Created By"
+                android:text="@string/created_by"
                 android:id="@+id/text_created"/>
 
     </LinearLayout>
@@ -70,7 +70,7 @@
             android:paddingHorizontal="20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Residence"
+            android:text="@string/residence"
             android:layout_marginTop="20dp"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             android:id="@+id/textView6"
@@ -80,7 +80,7 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Residence not found"
+            android:text="@string/residence_nf"
             tools:layout_editor_absoluteX="-16dp"
             android:layout_marginVertical="20dp"
             app:layout_constraintTop_toBottomOf="@+id/textView6"

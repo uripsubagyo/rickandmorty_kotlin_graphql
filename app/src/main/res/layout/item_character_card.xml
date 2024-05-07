@@ -32,18 +32,23 @@
                 android:padding="10dp"
         >
             <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:text="Rick Sanchex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dummy_name"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:id="@+id/name_item"
                     app:layout_constraintBottom_toTopOf="@+id/type_character"
-                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Human"
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:text="@string/human_text"
                       android:textColor="@color/white"
                       android:id="@+id/type_character"
-                      app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintBottom_toBottomOf="parent"
+                      app:layout_constraintEnd_toEndOf="parent"
                       app:layout_constraintStart_toStartOf="parent"
                       android:textSize="10sp"
             />
