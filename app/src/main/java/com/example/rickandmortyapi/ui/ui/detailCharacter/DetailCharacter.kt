@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.blue
 import androidx.lifecycle.*
+import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.example.rickandmortyapi.R
 import com.example.rickandmortyapi.databinding.ActivityDetailCharacterBinding
@@ -41,16 +42,19 @@ class DetailCharacter : AppCompatActivity() {
 
         detaiCharacterViewMode.getDetailCharacter(idCharacter = intent.getStringExtra(ID).toString())
 
-        Log.d("CHECK_ID", intent.getStringExtra(ID).toString())
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
                 detaiCharacterViewMode.dataDetailCharacter.collectLatest {
-                    Log.d("RESULT_DATA_CHARACTER", it.detailCharacter.toString())
                     resultView(it.detailCharacter)
                 }
             }
         }
 
+
+        val btnExit : ImageView = findViewById(R.id.exit_button)
+        btnExit.setOnClickListener{
+            Navigation.findNavController(this, R.id.nav_host_fragment_activity_main_home).navigate(R.id.navigation_character)
+        }
 
     }
 
