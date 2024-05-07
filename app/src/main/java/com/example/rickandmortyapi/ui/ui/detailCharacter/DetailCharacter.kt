@@ -20,6 +20,7 @@ import com.example.rickandmortyapi.domain.use_case.character.GetCharactersUseCas
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 @AndroidEntryPoint
 class DetailCharacter : AppCompatActivity() {
@@ -35,9 +36,10 @@ class DetailCharacter : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_character)
+//        setContentView(R.layout.activity_detail_character)
 
-//        binding = ActivityDetailCharacterBinding.inflate(layoutInflater)
+        binding = ActivityDetailCharacterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
         detaiCharacterViewMode.getDetailCharacter(idCharacter = intent.getStringExtra(ID).toString())
@@ -53,7 +55,7 @@ class DetailCharacter : AppCompatActivity() {
 
         val btnExit : ImageView = findViewById(R.id.exit_button)
         btnExit.setOnClickListener{
-            Navigation.findNavController(this, R.id.nav_host_fragment_activity_main_home).navigate(R.id.navigation_character)
+            finish()
         }
 
     }

@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.core.os.bundleOf
 import androidx.fragment.app.commit
 import androidx.lifecycle.*
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +21,7 @@ import com.example.rickandmortyapi.ui.ui.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 
 @AndroidEntryPoint
@@ -66,13 +68,12 @@ class DetailLocation : AppCompatActivity(){
                         binding.textNotFound.visibility = View.GONE
                         characterIconAdapter.submitList(it.detailLocation.residents)
                     }
+
                 }
             }
         }
-
         binding.backIcon.setOnClickListener{
-            Navigation.findNavController(this, R.id.nav_host_fragment_activity_main_home).navigate(R.id.navigation_location)
-
+            finish()
         }
     }
 
