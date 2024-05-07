@@ -1,10 +1,12 @@
 package com.example.rickandmortyapi.ui.ui.detailLocation
 
 import android.content.Intent
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.core.os.bundleOf
@@ -68,11 +70,12 @@ class DetailLocation : AppCompatActivity(){
                         binding.textNotFound.visibility = View.GONE
                         characterIconAdapter.submitList(it.detailLocation.residents)
                     }
-
                 }
             }
         }
-        binding.backIcon.setOnClickListener{
+
+        val btnback: ImageView = findViewById(R.id.back_icon)
+        btnback.setOnClickListener{
             finish()
         }
     }
