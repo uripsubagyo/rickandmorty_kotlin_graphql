@@ -1,10 +1,9 @@
 package com.example.rickandmortyapi.data.mapper
 
-import android.util.Log
 import com.example.rickandmortyapi.CharacterQuery
 import com.example.rickandmortyapi.CharactersQuery
-import com.example.rickandmortyapi.domain.model.Character
-import com.example.rickandmortyapi.domain.model.OriginCharacter
+import com.example.rickandmortyapi.domain.model.characters.Character
+import com.example.rickandmortyapi.domain.model.characters.OriginCharacter
 import com.example.rickandmortyapi.domain.model.characters.SimpleCharacter
 
 fun CharactersQuery.Characters.toCharacterList(): List<SimpleCharacter> {
@@ -19,7 +18,7 @@ fun CharactersQuery.Characters.toCharacterList(): List<SimpleCharacter> {
 }
 
 
-fun CharacterQuery.Character.toCharacter():Character  =
+fun CharacterQuery.Character.toCharacter(): Character =
     Character(
         id = this.id.orEmpty(),
         name = this.name.orEmpty(),

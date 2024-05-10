@@ -1,8 +1,5 @@
 package com.example.rickandmortyapi.domain.model.Location
 
-import androidx.lifecycle.viewmodel.CreationExtras
-import com.example.rickandmortyapi.ui.ui.detailLocation.DetailLocation
-
 data class DetailLocation (
     val id: String,
     val  name: String,
