@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rickandmortyapi.R
 import com.example.rickandmortyapi.databinding.FragmentHomeBinding
 import com.example.rickandmortyapi.present.HomeActivity
-import com.example.rickandmortyapi.present.ui.home.Adapter.CharacterListAdapter
-import com.example.rickandmortyapi.present.ui.home.Adapter.LocationsListAdapter
+import com.example.rickandmortyapi.present.ui.home.adapter.CharacterListAdapter
+import com.example.rickandmortyapi.present.ui.home.adapter.LocationsListAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

@@ -12,7 +12,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rickandmortyapi.databinding.FragmentCharacterBinding
-import com.example.rickandmortyapi.present.ui.home.Adapter.CharacterListAdapter
+import com.example.rickandmortyapi.present.ui.home.adapter.CharacterListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

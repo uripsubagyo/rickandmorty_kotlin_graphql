@@ -1,4 +1,4 @@
-package com.example.rickandmortyapi.present.ui.detailLocation.Adapter
+package com.example.rickandmortyapi.present.ui.detailLocation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

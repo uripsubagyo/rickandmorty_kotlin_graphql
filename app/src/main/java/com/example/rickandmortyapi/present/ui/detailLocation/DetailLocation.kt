@@ -10,7 +10,7 @@ import androidx.lifecycle.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rickandmortyapi.R
 import com.example.rickandmortyapi.databinding.ActivityDetailLocationBinding
-import com.example.rickandmortyapi.present.ui.detailLocation.Adapter.CharacterIconAdapter
+import com.example.rickandmortyapi.present.ui.detailLocation.adapter.CharacterIconAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -37,6 +37,9 @@ class DetailLocation : AppCompatActivity(){
         setup()
 
         detailLocationViewModel.getDetailLocation(idLocation = intent.getStringExtra(ID).toString())
+        binding.frameLayout2.visibility = View.GONE
+        binding.linearLayout.visibility = View.GONE
+        binding.textNotFound.visibility = View.GONE
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -57,8 +60,13 @@ class DetailLocation : AppCompatActivity(){
                     textCreate.setText("Created ${it.detailLocation?.created}")
 
                     if (it.detailLocation?.residents != null) {
-                        binding.textNotFound.visibility = View.GONE
                         characterIconAdapter.submitList(it.detailLocation.residents)
+                        binding.textNotFound.visibility = View.GONE
+                        binding.progressActivityLocation.visibility = View.GONE
+                        binding.frameLayout2.visibility = View.VISIBLE
+                        binding.linearLayout.visibility = View.VISIBLE
+                    }else{
+                        binding.textNotFound.visibility = View.VISIBLE
                     }
                 }
             }

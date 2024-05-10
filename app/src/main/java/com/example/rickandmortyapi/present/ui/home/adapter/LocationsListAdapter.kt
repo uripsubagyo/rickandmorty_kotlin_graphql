@@ -1,4 +1,4 @@
-package com.example.rickandmortyapi.present.ui.home.Adapter
+package com.example.rickandmortyapi.present.ui.home.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
